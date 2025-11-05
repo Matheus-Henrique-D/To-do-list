@@ -1,8 +1,8 @@
-# [cite_start]Mini Projeto 3: Consumo de APIs - Lista de Tarefas [cite: 1]
+# Mini Projeto 3: Consumo de APIs - Lista de Tarefas 
 
-[cite_start]Este repositório contém o "Terceiro Mini Projeto" da Fatec Rio Claro, focado no tema "Consumo de APIs"[cite: 2, 3].
+Este repositório contém o "Terceiro Mini Projeto" da Fatec Rio Claro, focado no tema "Consumo de APIs".
 
-[cite_start]O objetivo do projeto é implementar um servidor de API (backend) em Python e um cliente (frontend) que consome os dados dessa API[cite: 7]. [cite_start]A colaboração foi realizada seguindo o requisito de contribuição via Pull Requests no GitHub[cite: 9].
+O objetivo do projeto é implementar um servidor de API (backend) em Python e um cliente (frontend) que consome os dados dessa API.A colaboração foi realizada seguindo o requisito de contribuição via Pull Requests no GitHub.
 
 ## 📝 Tema: API de Lista de Tarefas (To-Do List)
 
@@ -10,24 +10,24 @@ Foi implementada uma API RESTful simples para gerenciar uma lista de tarefas (To
 
 ## 🛠️ Tecnologias Utilizadas
 
-* [cite_start]**Servidor (Backend):** Python 3, **FastAPI**[cite: 8], **Uvicorn**
-* [cite_start]**Cliente (Frontend):** Python 3, **Requests** [cite: 8]
-* [cite_start]**Colaboração:** Git e GitHub (Fork & Pull Requests) [cite: 9]
+* **Servidor (Backend):** Python 3, **FastAPI**, **Uvicorn**
+* **Cliente (Frontend):** Python 3, **Requests** 
+* **Colaboração:** Git e GitHub (Fork & Pull Requests) 
 
 ## 📂 Estrutura de Diretórios
 
-[cite_start]O projeto segue a estrutura de diretórios sugerida no documento da atividade [cite: 10-25]:
+O projeto segue a estrutura de diretórios sugerida no documento da atividade:
 
 ```
 projeto-api-tarefas/
 ├── .gitignore
 ├── README.md
 ├── requirements.txt   # Dependências do projeto (FastAPI, Uvicorn, Requests)
-[cite_start]├── server/            [cite: 13]
-[cite_start]│   └── app/           [cite: 14]
-[cite_start]│       └── main.py    # O servidor FastAPI (Backend) [cite: 15]
-[cite_start]└── client/            [cite: 21]
-    [cite_start]└── main.py        # O cliente 'requests' (Frontend) [cite: 22]
+├── server/            
+│   └── app/           
+│       └── main.py    # O servidor FastAPI (Backend) 
+└── client/            
+    └── main.py        # O cliente 'requests' (Frontend) 
 ```
 
 *(Nota: O `cliente.py` do nosso plano deve ser este `client/main.py`, e o `main_api.py` deve ser este `server/app/main.py`)*
@@ -40,7 +40,7 @@ Para rodar o projeto, você precisará de **dois terminais** abertos simultaneam
 
 1.  Clone este repositório:
     ```bash
-    git clone [URL-DO-SEU-REPOSITÓRIO]
+    git clone https://github.com/Matheus-Henrique-D/To-do-list.git
     cd projeto-api-tarefas
     ```
 
@@ -95,9 +95,9 @@ python main.py
 
 ## 👥 Colaboração
 
-[cite_start]Este projeto foi desenvolvido em dupla, seguindo o requisito de contribuição via Pull Requests[cite: 9].
+Este projeto foi desenvolvido em dupla, seguindo o requisito de contribuição via Pull Requests.
 
-* **Dono do Repositório:** [Nome ou @UsuárioGitHub da Pessoa A]
-* **Colaborador:** [Nome ou @UsuárioGitHub da Pessoa B]
+* **Dono do Repositório:** Matheus Henrique
+* **Colaborador:** Nicolas Ferreira
 
 O fluxo de trabalho seguiu o modelo Fork & Pull Request para registrar as contribuições de cada integrante.
