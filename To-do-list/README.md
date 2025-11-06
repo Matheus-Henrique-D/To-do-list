@@ -13,7 +13,7 @@ Este projeto é uma API RESTful simples para gerenciar uma lista de tarefas (To-
 ToDo/
 └── To-do-list/
     ├── .venv/
-    ├── main_api.py        # O servidor FastAPI (Backend)
+    ├── app.py             # O servidor FastAPI (Backend)
     ├── cliente.py         # Um cliente de exemplo para a API
     ├── tarefas.py         # Módulo de lógica de negócio das tarefas
     ├── requirements.txt   # Dependências do projeto
