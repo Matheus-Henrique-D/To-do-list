@@ -1,7 +1,6 @@
 import requests
 import sys
 
-# URL da API. Certifique-se de que esta é a URL correta do servidor do seu colega.
 API_URL = "http://127.0.0.1:8000"
 
 def listar_tarefas():
@@ -21,7 +20,6 @@ def listar_tarefas():
             return
             
         print("\n--- Lista de Tarefas ---")
-        # Assumindo que cada tarefa é um dicionário com 'id' e 'descricao'
         for tarefa in tarefas:
             print(f"  ID: {tarefa.get('id', '?')} | Descrição: {tarefa.get('descricao', 'Sem descrição')}")
         print("------------------------\n")
@@ -41,14 +39,12 @@ def adicionar_tarefa(descricao):
         return
 
     print(f"Adicionando nova tarefa: '{descricao}'")
-    # O formato do dicionário deve ser o que o servidor espera
     dados = {"descricao": descricao}
     
     try:
         resposta = requests.post(f"{API_URL}/tarefas", json=dados)
         resposta.raise_for_status()
         
-        # 201 Created é o status ideal para um POST que cria um recurso
         if resposta.status_code == 201 or resposta.status_code == 200:
             print("\nTarefa adicionada com sucesso!")
             tarefa_criada = resposta.json()
