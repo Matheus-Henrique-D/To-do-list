@@ -1,103 +1,128 @@
-# Mini Projeto 3: Consumo de APIs - Lista de Tarefas 
+# API de Lista de Tarefas (To-Do List)
 
-Este repositório contém o "Terceiro Mini Projeto" da Fatec Rio Claro, focado no tema "Consumo de APIs".
-
-O objetivo do projeto é implementar um servidor de API (backend) em Python e um cliente (frontend) que consome os dados dessa API.A colaboração foi realizada seguindo o requisito de contribuição via Pull Requests no GitHub.
-
-## 📝 Tema: API de Lista de Tarefas (To-Do List)
-
-Foi implementada uma API RESTful simples para gerenciar uma lista de tarefas (To-Do List). O servidor permite criar e listar tarefas. Os dados são armazenados em memória (em uma lista Python) enquanto o servidor está em execução.
+Este projeto é uma API RESTful simples para gerenciar uma lista de tarefas (To-Do List), desenvolvida com FastAPI.
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **Servidor (Backend):** Python 3, **FastAPI**, **Uvicorn**
-* **Cliente (Frontend):** Python 3, **Requests** 
-* **Colaboração:** Git e GitHub (Fork & Pull Requests) 
+*   **Servidor (Backend):** Python 3, FastAPI, Uvicorn
+*   **Cliente (Exemplo):** Python 3, Requests
 
 ## 📂 Estrutura de Diretórios
 
-O projeto segue a estrutura de diretórios sugerida no documento da atividade:
-
 ```
-projeto-api-tarefas/
-├── .gitignore
-├── README.md
-├── requirements.txt   # Dependências do projeto (FastAPI, Uvicorn, Requests)
-├── server/            
-│   └── app/           
-│       └── main.py    # O servidor FastAPI (Backend) 
-└── client/            
-    └── main.py        # O cliente 'requests' (Frontend) 
+ToDo/
+└── To-do-list/
+    ├── .venv/
+    ├── main_api.py        # O servidor FastAPI (Backend)
+    ├── cliente.py         # Um cliente de exemplo para a API
+    ├── tarefas.py         # Módulo de lógica de negócio das tarefas
+    ├── requirements.txt   # Dependências do projeto
+    └── README.md
 ```
-
-*(Nota: O `cliente.py` do nosso plano deve ser este `client/main.py`, e o `main_api.py` deve ser este `server/app/main.py`)*
 
 ## 🚀 Como Executar o Projeto
 
-Para rodar o projeto, você precisará de **dois terminais** abertos simultaneamente.
-
 ### 1. Pré-requisitos
 
-1.  Clone este repositório:
+1.  Clone o repositório (ou certifique-se de estar no diretório do projeto).
+
+2.  (Opcional, mas recomendado) Crie e ative um ambiente virtual:
     ```bash
-    git clone https://github.com/Matheus-Henrique-D/To-do-list.git
-    cd projeto-api-tarefas
+    python -m venv .venv
+    # No Windows:
+    .venv\Scripts\activate
+    # No macOS/Linux:
+    # source .venv/bin/activate
     ```
 
-2.  (Opcional, mas recomendado) Crie um ambiente virtual:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # No Windows: .\venv\Scripts\activate
-    ```
-
-3.  Instale as dependências (FastAPI, Uvicorn e Requests):
+3.  Instale as dependências:
     ```bash
     pip install -r requirements.txt
+    pip install fastapi uvicorn
     ```
 
-### 2. Terminal 1: Rodar o Servidor (Backend)
+### 2. Rodar o Servidor (Backend)
 
-Neste terminal, vamos iniciar o servidor FastAPI.
-
-```bash
-# Navegue até a pasta do servidor
-cd server/app
-
-# Inicie o servidor Uvicorn
-# (Ele irá recarregar automaticamente se você mudar o código)
-uvicorn main:app --reload
-```
-
-O terminal deve mostrar que o servidor está rodando em `http://127.0.0.1:8000`. **Deixe este terminal aberto.**
-
-### 3. Terminal 2: Usar o Cliente (Frontend)
-
-Abra um **novo terminal** na pasta raiz do projeto.
+Em um terminal, na pasta `To-do-list`, inicie o servidor FastAPI:
 
 ```bash
-# Navegue até a pasta do cliente
-cd client
+uvicorn app:app --reload
 ```
 
-Agora você pode usar o cliente para interagir com a API:
+O terminal indicará que o servidor está rodando em `http://127.0.0.1:8000`. Mantenha este terminal aberto. Você também pode acessar a documentação interativa da API em `http://127.0.0.1:8000/docs`.
 
-```bash
-# Para ADICIONAR uma nova tarefa:
-python main.py adicionar "Comprar pão"
-python main.py adicionar "Estudar para a prova de APIs"
+### 3. Usar o Cliente (Exemplo)
 
-# Para LISTAR todas as tarefas:
-python main.py listar
+O arquivo `cliente.py` contém um exemplo de como interagir com a API. Você pode executá-lo em um **novo terminal** (na mesma pasta `To-do-list`) para testar o backend.
 
-# Para ver os comandos disponíveis:
-python main.py
-```
+## 📖 Endpoints da API
 
-## 👥 Colaboração
+A API fornece os seguintes endpoints para gerenciar tarefas:
 
-Este projeto foi desenvolvido em dupla, seguindo o requisito de contribuição via Pull Requests.
+### Listar todas as tarefas
 
-* **Dono do Repositório:** Matheus Henrique
-* **Colaborador:** Nicolas Ferreira
+*   **GET** `/tarefas`
+*   **Descrição:** Retorna um dicionário com todas as tarefas cadastradas.
+*   **Exemplo de Resposta:**
+    ```json
+    {
+      "1": {
+        "id": 1,
+        "tarefa": "Comprar leite",
+        "data": "2025-11-10",
+        "hora": null
+      }
+    }
+    ```
 
-O fluxo de trabalho seguiu o modelo Fork & Pull Request para registrar as contribuições de cada integrante.
+### Obter uma tarefa por ID
+
+*   **GET** `/tarefas/{item_id}`
+*   **Descrição:** Retorna uma única tarefa com base no ID fornecido.
+*   **Exemplo de Resposta:**
+    ```json
+    {
+      "id": 1,
+      "tarefa": "Comprar leite",
+      "data": "2025-11-10",
+      "hora": null
+    }
+    ```
+
+### Obter próximas tarefas
+
+*   **GET** `/tarefas/proximos`
+*   **Descrição:** Retorna uma lista de tarefas com data de vencimento futura, ordenadas da mais próxima para a mais distante.
+
+### Adicionar uma nova tarefa
+
+*   **POST** `/tarefas`
+*   **Descrição:** Adiciona uma nova tarefa à lista.
+*   **Corpo da Requisição (JSON):**
+    ```json
+    {
+      "tarefa": "Estudar para a prova",
+      "data": "2025-12-01",
+      "hora": "14:00"
+    }
+    ```
+*   **Exemplo de Resposta:**
+    ```json
+    {
+      "id": 2,
+      "tarefa": "Estudar para a prova",
+      "data": "2025-12-01",
+      "hora": "14:00"
+    }
+    ```
+
+### Remover uma tarefa
+
+*   **DELETE** `/tarefas/{item_id}`
+*   **Descrição:** Remove uma tarefa da lista com base no ID fornecido.
+*   **Exemplo de Resposta:**
+    ```json
+    {
+      "message": "Tarefa 1 removida com sucesso!"
+    }
+    ```
